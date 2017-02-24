@@ -15,5 +15,17 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var details: UILabel!
 
-
+    func configureCell(item: Item) {
+        
+        let number = item.price as NSNumber
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        
+        title.text = item.title
+        price.text = formatter.string(from: number)
+        details.text = item.details
+        
+    }
 }
