@@ -252,6 +252,12 @@ FlRpdGxlA
                             <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsField" destination="q3j-dH-ket" id="MVp-yF-wEL"/>
+                        <outlet property="priceField" destination="KW6-9n-G06" id="cU8-iQ-24p"/>
+                        <outlet property="storePicker" destination="X9Q-bN-pHc" id="m2J-Dp-5lu"/>
+                        <outlet property="titleField" destination="3Gb-zt-YDb" id="UP6-6x-HY3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zO-U0-2O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
