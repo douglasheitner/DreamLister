@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ItemsDetailsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
@@ -15,25 +16,58 @@ class ItemsDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var priceField: CustomTextField!
     @IBOutlet weak var detailsField: CustomTextField!
     
+    var stores = [Store]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let topItem = self.navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+            
+            topItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
         
         storePicker.dataSource = self
         storePicker.delegate = self
         
-        }
         
-        // Do any additional setup after loading the view.
+        let store0 = Store(context: context)
+        store0.name = "Amazon"
+        let store1 = Store(context: context)
+        store1.name = "Apple"
+        let store2 = Store(context: context)
+        store2.name = "Bose"
+        let store3 = Store(context: context)
+        store3.name = "eBay"
+        let store4 = Store(context: context)
+        store4.name = "Best Buy"
+        
+        ad.saveContext()
+        getStores()
+
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        let store = stores[row]
+        
+        return store.name
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 0
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 0
+        return stores.count
+    }
+    
+    func getStores () {
+        let fetchRequest: NSFetchRequest<Store> = Store.fetchRequest()
+        do {
+            self.stores = try context.fetch(fetchRequest)
+            self.storePicker.reloadAllComponents()
+        } catch {
+            // Handle Error
+        }
     }
 }
