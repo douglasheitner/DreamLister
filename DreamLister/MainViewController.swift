@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        //generateData()
+//        generateData()
         
         attemptFetch()
     }
@@ -137,7 +137,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func generateData() {
         let item = Item(context: context)
-        item.title = "Boosted Board"
+        item.title = "MacBook Pro"
         item.price = 1500
         item.details = "Incredible"
       
@@ -146,6 +146,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         item2.title = "Tesla Model 3"
         item2.price = 35000
         item2.details = "Best car ever!!!"
+        
+        let item3 = Item(context: context)
+        item3.title = "Bose QC35"
+        item3.price = 1500
+        item3.details = "Have it"
+        
+        
+        let item4 = Item(context: context)
+        item4.title = "Boosted Board"
+        item4.price = 35000
+        item4.details = "Why have a car"
         
         ad.saveContext()
     }

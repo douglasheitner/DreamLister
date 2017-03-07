@@ -30,18 +30,18 @@ class ItemsDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
         storePicker.delegate = self
         
         
-        let store0 = Store(context: context)
-        store0.name = "Amazon"
-        let store1 = Store(context: context)
-        store1.name = "Apple"
-        let store2 = Store(context: context)
-        store2.name = "Bose"
-        let store3 = Store(context: context)
-        store3.name = "eBay"
-        let store4 = Store(context: context)
-        store4.name = "Best Buy"
-        
-        ad.saveContext()
+//        let store0 = Store(context: context)
+//        store0.name = "Amazon"
+//        let store1 = Store(context: context)
+//        store1.name = "Apple"
+//        let store2 = Store(context: context)
+//        store2.name = "Bose"
+//        let store3 = Store(context: context)
+//        store3.name = "eBay"
+//        let store4 = Store(context: context)
+//        store4.name = "Best Buy"
+//        
+//        ad.saveContext()
         getStores()
 
     }
@@ -70,4 +70,45 @@ class ItemsDetailsViewController: UIViewController, UIPickerViewDelegate, UIPick
             // Handle Error
         }
     }
+    @IBAction func savePressed(_ sender: UIButton) {
+        
+        let item = Item(context: context)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
