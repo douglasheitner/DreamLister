@@ -78,12 +78,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        let titleSort = NSSortDescriptor(key: "title", ascending: true)
         
-        fetchRequest.sortDescriptors = [dateSort]
+        switch segment.selectedSegmentIndex {
+            case 0: fetchRequest.sortDescriptors = [dateSort]
+            case 1: fetchRequest.sortDescriptors = [priceSort]
+            case 2: fetchRequest.sortDescriptors = [titleSort]
+            default: fetchRequest.sortDescriptors = [dateSort]
+        }
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         self.controller = controller
+        controller.delegate = self
         
         do {
             
@@ -94,6 +102,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("\(error)")
         }
     }
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        
+        attemptFetch()
+        tableView.reloadData()
+        
+    }
+    
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     
@@ -132,6 +148,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let objs = controller.fetchedObjects, objs.count > 0 {
+            
+            let item = objs[indexPath.row]
+            performSegue(withIdentifier: "ItemDetailsViewController", sender: item)
+            
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailsViewController" {
+            if let destination = segue.destination as? ItemsDetailsViewController {
+                if let item = sender as? Item {
+                    destination.itemToEdit = item
+                }
+            }
         }
     }
     

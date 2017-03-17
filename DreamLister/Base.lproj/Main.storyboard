@@ -33,12 +33,15 @@
                                     <segment title="Title"/>
                                 </segments>
                                 <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="G0Q-xM-ve2"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="152" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-I3-iX3">
                                 <rect key="frame" x="16" y="132" width="343" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="150" id="uWx-8S-hR0" customClass="ItemCell" customModule="DreamLister" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="150" id="uWx-8S-hR0" customClass="ItemCell" customModule="DreamLister" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uWx-8S-hR0" id="x68-03-dWt">
@@ -152,7 +155,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePick" translatesAutoresizingMaskIntoConstraints="NO" id="deX-cu-OYs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePick" translatesAutoresizingMaskIntoConstraints="NO" id="deX-cu-OYs">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="I4U-H5-6u9"/>
@@ -165,6 +168,9 @@
                                     <constraint firstAttribute="width" constant="100" id="hjj-ht-isg"/>
                                     <constraint firstAttribute="height" constant="100" id="txy-K6-5bw"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addImage:" destination="uYg-Iu-2MT" eventType="touchUpInside" id="Ezm-gZ-C62"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Gb-zt-YDb" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="124" y="72" width="235" height="45"/>
@@ -253,12 +259,16 @@ FlRpdGxlA
                     <navigationItem key="navigationItem" title="Add/Edit" id="RPF-Mz-0xo">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Esu-I4-TGN">
                             <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deletePress:" destination="uYg-Iu-2MT" id="D5Q-81-GCG"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailsField" destination="q3j-dH-ket" id="MVp-yF-wEL"/>
                         <outlet property="priceField" destination="KW6-9n-G06" id="cU8-iQ-24p"/>
                         <outlet property="storePicker" destination="X9Q-bN-pHc" id="m2J-Dp-5lu"/>
+                        <outlet property="thumbImage" destination="deX-cu-OYs" id="ogP-Og-mWI"/>
                         <outlet property="titleField" destination="3Gb-zt-YDb" id="UP6-6x-HY3"/>
                     </connections>
                 </viewController>
@@ -296,7 +306,7 @@ FlRpdGxlA
         <image name="tesla" width="800" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2VO-Yk-Rps"/>
+        <segue reference="iCn-5a-Xbp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
